@@ -8,7 +8,7 @@ require( 'babel-core/register' )({
         'es6.modules',
         'es6.classes'
     ],
-    ignore: /generator-koa-api\/node_modules/
+    ignore: /generator-koa-rest-api\/node_modules/
 })
 
 module.exports = require( './app' )
