@@ -39,9 +39,7 @@ export default class GeneratorKoaApi extends Base {
     static prompts = [{
         name: 'projectName',
         message: 'What is the name of your project?',
-        validate: str => {
-            return !/\s/.test( str )
-        }
+        validate: str => !/\s/.test( str )
     }, {
         name: 'projectDescription',
         message: 'What is the project description?'
@@ -65,6 +63,18 @@ export default class GeneratorKoaApi extends Base {
         type: 'confirm',
         message: 'Do you want to enable CORS?',
         default: true,
+        store: true
+    }, {
+        name: 'daemon',
+        type: 'confirm',
+        message: 'Will the process be daemonized via pm2?',
+        defualt: true,
+        store: true
+    }, {
+        name: 'daemonUser',
+        when: ans => ans.daemon,
+        message: 'Which user should the process run as?',
+        default: osenv.user(),
         store: true
     }]
 
@@ -106,12 +116,9 @@ export default class GeneratorKoaApi extends Base {
             }
 
             files
-                .map( file => {
-                    return file.replace( this.sourceRoot(), '' )
-                })
-                .map( file => {
-                    return file.replace( /^\//, '' )
-                })
+                .filter( file => !/^_/.test( path.relative( this.sourceRoot(), file ) ) )
+                .map( file => file.replace( this.sourceRoot(), '' ) )
+                .map( file => file.replace( /^\//, '' ) )
                 .forEach( file => {
                     this.fs.copyTpl(
                         this.templatePath( file ),
@@ -119,6 +126,21 @@ export default class GeneratorKoaApi extends Base {
                         this.props
                     )
                 })
+
+            // For now just tack on the optional file here
+            if ( this.props.daemon ) {
+                files
+                    .filter( file => /^_/.test( path.relative( this.sourceRoot(), file ) ) )
+                    .map( file => file.replace( this.sourceRoot(), '' ) )
+                    .map( file => file.replace( /^\//, '' ) )
+                    .forEach( file => {
+                        this.fs.copyTpl(
+                            this.templatePath( file ),
+                            this.destinationPath( file.replace( /^_/, '' ) ),
+                            this.props
+                        )
+                    })
+            }
 
             done()
         })
