@@ -4,7 +4,7 @@
   "description": "<%= projectDescription %>",
   "main": "lib/server.js",
   "scripts": {
-    "start": "DEBUG=koa* babel-node index",
+    "start": "DEBUG=koa* CONNECT_URL=0.0.0.0:5000 CONNECT_PROTOCOL=http:// babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "config": {
@@ -16,12 +16,12 @@
   "dependencies": {
     "babel": "^5.8.23",
     "co-body": "^4.0.0",
-    "co-views": "^2.1.0",
-    "hogan.js": "^3.0.2",
     "koa": "^1.0.0",
-    "koa-logger": "^1.3.0",
-    "koa-route": "^2.4.2",
-    "koa-static": "^1.4.9"
+    "koa-cors": "0.0.16",
+    "koa-routedebug": "^0.1.1",
+    "koa-router": "^5.1.2",
+    "koa-bunyan-logger": "^1.2.0",
+    "level-connect-client": "^0.4.0"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.1",

@@ -10,11 +10,11 @@ import yosay from 'yosay'
 
 
 /**
- * generator-koa-static
+ * generator-koa-api
  * @class
  * @extends Base <Yeoman-generator>
  */
-export default class GeneratorKoaStatic extends Base {
+export default class GeneratorKoaApi extends Base {
 
     /**
      * @constructs
@@ -67,8 +67,8 @@ export default class GeneratorKoaStatic extends Base {
      */
     hello() {
         this.log( yosay([
-            chalk.cyan( 'Koa Static' ),
-            'Basic koa static server'
+            chalk.cyan( 'Koa RESTful Api' ),
+            'Basic koa restful api server'
         ].join( '\n' ) ))
     }
 
@@ -78,7 +78,7 @@ export default class GeneratorKoaStatic extends Base {
     prompting() {
         let done = this.async()
 
-        this.prompt( GeneratorKoaStatic.prompts, props => {
+        this.prompt( GeneratorKoaApi.prompts, props => {
             this.props = props
             done()
         })
@@ -133,81 +133,3 @@ export default class GeneratorKoaStatic extends Base {
     }
 
 }
-
-
-/*
-init: function () {
-    this.pkg = require( '../package.json' )
-
-    this.on( 'end', function() {
-        if ( !this.options[ 'skip-install' ] ) {
-            this.installDependencies()
-        }
-    })
-},
-askFor: function () {
-    var done = this.async()
-
-    // Have Yeoman greet the user.
-    if ( !this.options[ 'skip-install-message' ] ) {
-        this.log( yosay(
-            'Welcome to the Koa-Static generator!'
-        ))
-    }
-
-    var prompts = [
-        {
-            type: 'input',
-            name: 'projectName',
-            message: 'What would you like to call this awesome project?',
-            validate: function( str ) {
-                return !/\s/.test( str )
-            }
-        },
-        {
-            type: 'input',
-            name: 'ghUser',
-            message: 'What is your Github username?'
-        },
-        {
-            type: 'list',
-            name: 'license',
-            message: 'What is the project license?',
-            choices: [ 'WTFPL', 'ISC', 'MIT' ]
-        }
-    ]
-
-    this.prompt( prompts, function( props ) {
-        Object.keys( props ).forEach( function( prop ) {
-            this[ prop ] = props[ prop ]
-        }.bind( this ))
-
-        done()
-    }.bind( this ) )
-},
-
-writing: {
-    app: function () {
-        this.template( '_package.json', 'package.json' )
-        this.template( '_bower.json', 'bower.json' )
-        this.src.copy( '.bowerrc', '.bowerrc' )
-        this.template( '_README.md', 'README.md' )
-        this.src.copy( 'index.js', 'index.js' )
-
-        this.dest.mkdir( 'bin' )
-        this.dest.mkdir( 'lib' )
-        this.dest.mkdir( 'public' )
-
-        this.src.copy( 'bin/start', 'bin/start' )
-        this.src.copy( 'lib/tmpl/404.hjs', 'lib/tmpl/404.hjs' )
-        this.src.copy( 'lib/util/views.js', 'lib/util/views.js' )
-        this.src.copy( 'lib/server.js', 'lib/server.js' )
-        this.template( 'public/_index.html', 'public/index.html' )
-
-        // Add extra empty dirs
-        this.dest.mkdir( 'lib/routes' )
-        this.dest.mkdir( 'lib/middleware' )
-        this.dest.mkdir( 'public/vendor' )
-    }
-}
-*/
