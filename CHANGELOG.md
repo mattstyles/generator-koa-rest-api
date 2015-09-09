@@ -1,6 +1,7 @@
 # 1.1.0
 
 * _add_ enable cors
+* _add_ PM2 shizzle
 
 # 1.0.1
 
