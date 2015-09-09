@@ -1,9 +1,9 @@
 {
   "name": "<%= projectName %>",
-  "exec_interpreter": "./node_modules/.bin/babel-node",
-  "script": "./index.js",
+  "script": "index.js",
   "cwd": "./",
   "watch": true,
+  "next_gen_js": true,
   "log_date_format": "YYYY-MM-DD HH:mm Z",
   "env": {
     "PORT": 14320,
