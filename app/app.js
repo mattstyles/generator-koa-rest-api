@@ -60,6 +60,12 @@ export default class GeneratorKoaApi extends Base {
         name: 'license',
         message: 'What is the project license?',
         choices: [ 'WTFPL', 'ISC', 'MIT' ]
+    }, {
+        name: 'cors',
+        type: 'confirm',
+        message: 'Do you want to enable CORS?',
+        default: true,
+        store: true
     }]
 
     /**
