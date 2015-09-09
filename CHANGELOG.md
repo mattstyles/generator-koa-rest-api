@@ -1,3 +1,7 @@
+# 1.1.1
+
+* _fix_ pm2 enable next gen js
+
 # 1.1.0
 
 * _add_ enable cors
