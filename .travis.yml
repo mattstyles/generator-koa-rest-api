@@ -1,0 +1,7 @@
+sudo: false
+language: node_js
+node_js:
+  - '0.10'
+before_install:
+  - currentfolder=${PWD##*/}
+  - if [ "$currentfolder" != 'generator-koa-static' ]; then cd .. && eval "mv $currentfolder generator-koa-static" && cd generator-koa-static; fi
