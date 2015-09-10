@@ -14,3 +14,5 @@ connect
         console.error( 'Error connecting to level-connect db instance' )
         console.error( err )
     })
+
+export default app
