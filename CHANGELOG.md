@@ -1,3 +1,8 @@
+# 1.2.0
+
+* _update_ include ignored files in template files
+* _fix_ actually enable pm2 babel
+
 # 1.1.1
 
 * _fix_ pm2 enable next gen js
