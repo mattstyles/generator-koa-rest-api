@@ -4,9 +4,11 @@
   "description": "<%= projectDescription %>",
   "main": "lib/server.js",
   "scripts": {
+    "prepack": "npm run build",
     "start": "DEBUG=koa* CONNECT_URL=0.0.0.0:5000 CONNECT_PROTOCOL=http:// babel-node src/index.js | bunyan -o short",
     "build": "babel src --out-dir lib",
-    <% if (daemon) { %>"daemon":"CONNECT_URL=0.0.0.0:5000 pm2 start --next-gen-js pm2.json -u <%= daemonUser %>", <%}%>
+    <% if (daemon) { %>"predaemon": "npm run build",<%}%>
+    <% if (daemon) { %>"daemon":"CONNECT_URL=0.0.0.0:5000 pm2 start pm2.json -u <%= daemonUser %>", <%}%>
     <% if (daemon) { %>"daemon:stop":"pm2 stop <%= projectName %> && pm2 stop --watch <%= projectName %>", <%}%>
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,7 +1,7 @@
 
-import connect from './lib/connect'
-import app from './lib/server'
-import pkg from './package.json'
+import connect from './connect'
+import app from './server'
+import pkg from '../package.json'
 
 let port = process.env.PORT || process.env.npm_package_config_port || 14320
 
