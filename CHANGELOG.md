@@ -1,6 +1,7 @@
 #
 
 * _add_ watch task
+* _update_ project name links
 
 # 2.0.0
 

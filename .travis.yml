@@ -4,4 +4,4 @@ node_js:
   - '0.10'
 before_install:
   - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-koa-static' ]; then cd .. && eval "mv $currentfolder generator-koa-static" && cd generator-koa-static; fi
+  - if [ "$currentfolder" != 'generator-koa-rest-api' ]; then cd .. && eval "mv $currentfolder generator-koa-rest-api" && cd generator-koa-rest-api; fi
