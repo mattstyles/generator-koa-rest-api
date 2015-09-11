@@ -1,3 +1,7 @@
+#
+
+* _add_ watch task
+
 # 2.0.0
 
 * _update_ use babel to transpile as a build step
