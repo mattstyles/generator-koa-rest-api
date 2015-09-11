@@ -3,7 +3,6 @@
   "script": "lib/index.js",
   "cwd": "./",
   "watch": true,
-  "log_date_format": "YYYY-MM-DD HH:mm Z",
   "env": {
     "PORT": 14320,
     "CONNECT_URL": "0.0.0.0:5000"

@@ -8,11 +8,15 @@ let port = process.env.PORT || process.env.npm_package_config_port || 14320
 connect
     .on( 'ready', () => {
         app.listen( port )
-        console.log( '[', pkg.name, ']', 'listening on', port )
+        logger.debug( '%s app listening on port %s', pkg.name, port )
     })
     .on( 'error', err => {
-        console.error( 'Error connecting to level-connect db instance' )
-        console.error( err )
+        logger.error({
+            field: 'connect',
+            msg: 'Error connecting to db instance',
+            err: err
+        })
     })
+
 
 export default app

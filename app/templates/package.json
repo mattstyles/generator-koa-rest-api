@@ -26,7 +26,7 @@
     <% if (cors) { %>"koa-cors": "0.0.16",<%}%>
     "koa-routedebug": "^0.1.1",
     "koa-router": "^5.1.2",
-    "koa-bunyan-logger": "^1.2.0",
+    "koa-bunyan-log": "^1.0.0",
     "level-connect-client": "^0.4.0"
   },
   "devDependencies": {
