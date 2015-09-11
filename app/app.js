@@ -127,19 +127,26 @@ export default class GeneratorKoaApi extends Base {
                     )
                 })
 
-            // For now just tack on the optional file here
+            files
+                .filter( file => /^_/.test( path.relative( this.sourceRoot(), file ) ) )
+                .filter( file => !/pm2\.json/.test( path.relative( this.sourceRoot(), file ) ) )
+                .map( file => file.replace( this.sourceRoot(), '' ) )
+                .map( file => file.replace( /^\//, '' ) )
+                .forEach( file => {
+                    this.fs.copyTpl(
+                        this.templatePath( file ),
+                        this.destinationPath( file.replace( /^_/, '' ) ),
+                        this.props
+                    )
+                })
+
+            // Tack on daemon files
             if ( this.props.daemon ) {
-                files
-                    .filter( file => /^_/.test( path.relative( this.sourceRoot(), file ) ) )
-                    .map( file => file.replace( this.sourceRoot(), '' ) )
-                    .map( file => file.replace( /^\//, '' ) )
-                    .forEach( file => {
-                        this.fs.copyTpl(
-                            this.templatePath( file ),
-                            this.destinationPath( file.replace( /^_/, '' ) ),
-                            this.props
-                        )
-                    })
+                this.fs.copyTpl(
+                    this.templatePath( '_pm2.json' ),
+                    this.destinationPath( 'pm2.json' ),
+                    this.props
+                )
             }
 
             done()

@@ -1,7 +1,9 @@
-#
+# 2.1.0
 
 * _add_ watch task
+* _add_ prepublish script
 * _update_ project name links
+* _update_ log module
 
 # 2.0.0
 
