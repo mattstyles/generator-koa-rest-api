@@ -4,6 +4,7 @@
 * _add_ prepublish script
 * _update_ project name links
 * _update_ log module
+* _update_ copy files over
 
 # 2.0.0
 
